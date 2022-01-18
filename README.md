@@ -1,2 +1,1 @@
-# ellieollie-JSFEPRESCHOOL
-Private repository for @ellieollie
+Photographer website portfolio
