@@ -39,9 +39,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html,
 body {
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   background-color: var(--color-black);
   color: var(--color-white);
@@ -80,8 +79,8 @@ a:hover {
 
 /*!HEADER*/
 
-.header {
-  background: no-repeat 100% 0%/100% url(assets/jpg/main-bg.jpg);
+.main-image {
+  background: no-repeat 50% 0/cover url(assets/jpg/main-bg.jpg);
 }
 
 .header-container,
@@ -105,11 +104,6 @@ a:hover {
 .video-play:hover,
 .social-link:hover {
   filter: invert(25%) sepia(9%) saturate(1120%) hue-rotate(360deg) brightness(90%) contrast(81%);
-}
-
-.menu-right {
-  display: flex;
-  align-items: center;
 }
 
 .burger {
@@ -158,12 +152,11 @@ a:hover {
 /*!MAIN*/
 
 .hero {
-  margin-bottom: 6.5%;
+  margin-bottom: 7%;
 }
 
 .hero {
-  background: no-repeat 100% 108%/100% url(assets/jpg/main-bg.jpg);
-  padding: 164px 0 336px 80px;
+  padding: 164px 0 calc(24% - 17px) 80px;
 }
 
 .title {
@@ -176,7 +169,7 @@ a:hover {
 }
 
 .description {
-  width: 470px;
+  width: calc(35% - 10px);
   padding-bottom: 25px;
 }
 
@@ -228,6 +221,7 @@ a:hover {
   font-size: var(--font2);
   line-height: 80px;
   background-color: var(--color-black);
+  color: var(--color-gold);
 }
 
 .skills {
@@ -257,7 +251,7 @@ a:hover {
 }
 
 .skill-title {
-  padding-bottom: 20px;
+  padding-bottom: 22px;
   letter-spacing: 0.3px;
 }
 
@@ -279,11 +273,11 @@ a:hover {
 }
 
 .switch-container {
-  width: 895px;
   margin: 0 auto 59px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 4px;
 }
 
 .switch-btn:first-child {
@@ -310,12 +304,13 @@ a:hover {
 .gallery {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 25px
 }
 
 .video-container {
-  height: 707px;
-  background: no-repeat 100% 100%/100% url(assets/jpg/video-player.jpg);
+  padding: calc(26% - 10px);
+  background: no-repeat 30% 0%/100% url(assets/jpg/video-player.jpg);
   position: relative;
 }
 
@@ -327,6 +322,10 @@ a:hover {
   cursor: pointer;
 }
 
+.play-btn {
+  width: 9vw;
+}
+
 .price {
   display: flex;
   flex-direction: column;
@@ -335,26 +334,27 @@ a:hover {
 .price-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 26px;
 }
 
 .price-item {
-  width: 445px;
-  height: 501px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 42px calc(9% - 15px);
   border: 2px solid var(--color-gold);
 }
 
 .price-title {
-  padding: 43px 0 19px;
+  padding: 0 0 19px;
   font-size: 28px;
   line-height: 56px;
 }
 
 .price-value {
   padding-bottom: 20px;
+  color: var(--color-gold);
   font-size: 24px;
   line-height: 48px;
 }
@@ -370,19 +370,18 @@ a:hover {
 }
 
 .contacts {
-  height: 700px;
-  background: no-repeat 100% 100%/100% url(assets/jpg/contacts-bg.jpg);
+  background: no-repeat 30% 0%/cover url(assets/jpg/contacts-bg.jpg);
   display: flex;
   flex-direction: column;
   align-items: end;
 }
 
 .contacts-container {
-  padding: 61px 20px 0 0;
+  padding: 61px 20px calc(14% - 8px);
 }
 
 .contacts-title {
-  padding: 0 0 23px;
+  padding: 0 0 22px;
   background-color: transparent;
 }
 
@@ -426,7 +425,7 @@ a:hover {
 }
 
 .footer-container {
-  height: 150px;
+  min-height: 150px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -455,9 +454,8 @@ a:hover {
 
 @media (max-width: 768px) {
 
-  html,
   body {
-    width: 768px;
+    max-width: 768px;
   }
 
   :root {
@@ -467,16 +465,20 @@ a:hover {
 
 /*!HEADER*/
 
-  .header {
-    background: no-repeat 3% 5.7%/128% url(assets/jpg/main-bg.jpg);
+  .main-image {
+    background: no-repeat 50% 0/cover url(assets/jpg/main-bg_768.jpg);
   }
 
   .header-container {
     padding: 0 60px;
   }
 
+  .logo {
+    position: fixed;
+  }
+
   .languages {
-    padding-right: 70px;
+    padding-right: 75px;
   }
 
   .languages #ru {
@@ -490,10 +492,6 @@ a:hover {
   /*------------------------------------*/
 
   /*!BURGER JS*/
-
-  .menu-right {
-    flex-direction: row-reverse;
-  }
 
   .menu-burger {
     display: flex;
@@ -544,7 +542,7 @@ a:hover {
     height: 100%;
     padding: 154px 0 0 128px;
     background-color: rgba(0, 0, 0, 0.99);
-    transition: right 0.3s ease 0s;
+    transition: right 0.6s ease 0s;
     /* overflow: auto; */
   }
 
@@ -570,8 +568,8 @@ a:hover {
   /*!MAIN*/
 
   .hero {
-    background: no-repeat 3% 132%/128% url(assets/jpg/main-bg.jpg);
-    padding: 79px 0 181px 60px;
+    padding: 79px 0 calc(21% - 10px) 60px;
+    margin-bottom: 10.4%;
   }
 
   .title {
@@ -581,7 +579,7 @@ a:hover {
   }
 
   .description {
-    width: 390px;
+    width: calc(57% - 10px);
     padding-bottom: 59px;
     line-height: 24px;
   }
@@ -601,13 +599,9 @@ a:hover {
   }
 
   .skills-container {
-    padding: 0 38px;
-    gap: 0;
-  }
-
-  .skill:first-child,
-  .skill:nth-child(2) {
-    margin-bottom: 75px;
+    gap: 73px;
+    padding-left: calc(10% - 10px);
+    padding-right: calc(10% - 10px);
   }
 
   .skill-icon {
@@ -629,7 +623,7 @@ a:hover {
   }
 
   .switch-container {
-    width: 445px;
+    width: calc(80% - 50px);
     gap: 3px;
     margin-bottom: 60px;
   }
@@ -651,13 +645,17 @@ a:hover {
     justify-content: space-around;
   }
 
+  .gallery > img {
+    width: calc(64.6% - 20px);
+  }
+
   .video {
     padding: 0;
   }
 
   .video-container {
-    height: 420px;
-    background: no-repeat 0% 72%/105.6% url(assets/jpg/video-player.jpg);
+    padding: calc(28.6% - 10px);
+    background: no-repeat 0 0/cover url(assets/jpg/video-player_768.jpg);
   }
 
   .video-play {
@@ -669,7 +667,7 @@ a:hover {
   }
 
   .price {
-    margin-bottom: 10.5%;
+    margin-bottom: 10.1%;
   }
 
   .price-container {
@@ -677,12 +675,13 @@ a:hover {
   }
 
   .price-item {
-    width: 415px;
+    padding: 42px calc(15% - 12px);
   }
 
   .contacts {
-    height: 600px;
-    background: no-repeat 50% 28%/160.7% url(assets/jpg/contacts-bg.jpg);
+    display: flex;
+    justify-content: center;
+    background: no-repeat 49.7% 0%/cover url(assets/jpg/contacts-bg.jpg);
     align-items: center;
     padding: 0;
   }
@@ -691,7 +690,7 @@ a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 54px 0 0;
+    padding: 7vw 0 14vw;
   }
 
   .contacts-title {
@@ -706,14 +705,14 @@ a:hover {
   /*!FOOTER*/
 
   .footer-container {
-    height: 190px;
+    min-height: 190px;
     flex-direction: column;
     justify-content: start;
   }
 
   .author {
     margin-right: 0;
-    padding: 26px 0 16px;
+    padding: 29px 0 16px;
   }
 
   .author,
@@ -722,10 +721,155 @@ a:hover {
   }
 
   .rss {
-    padding-bottom: 34px;
+    padding-bottom: 31px;
   }
 
   .contact-links {
     gap: 28px;
+  }
+}
+
+@media (max-width: 620px) {
+
+  :root {
+    --font1: 16px;
+  }
+
+  .header-container {
+    padding: 0 20px;
+  }
+
+  .burger {
+    right: 20px;
+  }
+
+  .menu {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menu-list {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-item {
+    font-size: 42px;
+  }
+
+  .description {
+    font-size: var(--font1);
+  }
+
+  .skills {
+    margin-bottom: 10%;
+  }
+
+  .skill-description, .price-description {
+    font-size: 14px;
+    line-height: 26px;
+  }
+
+  .switch-container {
+    gap: 10px;
+  }
+
+  .switch-btn:nth-child(3) {
+    padding: 6px 72px;
+  }
+
+  .form-input,
+  .order-message {
+    width: auto;
+  }
+}
+
+@media (max-width: 500px) {
+
+  :root {
+    --font1: 14px;
+    --font2: 36px;
+    --font3: 24px;
+  }
+
+  .main-image {
+    height: 100vh;
+    background: no-repeat 75% 0/cover url(assets/jpg/main-bg_768.jpg);
+  }
+
+  .logo-img,
+  .skill-icon {
+    width: 12vw;
+  }
+
+  .burger-line {
+    width: 40px;
+    height: 2px;
+  }
+
+  #burger.active .burger-line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .lang,
+  .menu-item {
+    font-size: var(--font3);
+  }
+
+  .hero {
+    padding: 20px 0 calc(21% - 10px) 20px;
+  }
+
+  .title {
+    padding-bottom: 235px;
+  }
+
+  .description {
+    width: calc(100% - 10px);
+    padding-bottom: 15px;
+    font-size: var(--font1);
+  }
+
+  .skills-container {
+    gap: 55px;
+  }
+
+  .skill-icon {
+    padding-bottom: 14px;
+  }
+
+  .skill-title {
+    padding-bottom: 6px;
+  }
+
+  .video-play {
+    top: 36.7%;
+    left: 42.5%;
+  }
+
+  .play-btn {
+    width: 15vw;
+  }
+
+  .price-item {
+    padding: 25px calc(15% - 12px);
+  }
+
+  .price-title {
+    font-size: var(--font3);
+  }
+
+  .footer-container {
+    min-height: 150px;
+  }
+
+  .author {
+    padding: 15px 0 16px;
+  }
+
+  .rss {
+    padding-bottom: 18px;
   }
 }
