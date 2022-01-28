@@ -1,2 +1,1 @@
-# Portfolio
-Photographer website
+Photographer website portfolio
