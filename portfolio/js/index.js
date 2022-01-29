@@ -1,4 +1,4 @@
-import i18Obj from '/js/translate.js';
+import i18Obj from './translate.js';
 
 
 //-----------------------------------------------------------------
