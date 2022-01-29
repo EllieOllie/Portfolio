@@ -128,7 +128,7 @@ a:hover {
   transition: fill 0.5s ease-in-out;
 }
 
-.color-theme-link:hover {
+.color-theme-link.light:hover {
   animation: rotate 1.5s ease-in-out;
 }
 
@@ -303,7 +303,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
   margin: 0 auto;
 }
 
@@ -347,20 +346,13 @@ a:hover {
   border: 2px solid var(--color-gold);
 }
 
-.switch-btn:first-child {
-  padding: 6px 76px;
-}
-
-.switch-btn:nth-child(2) {
-  padding: 6px 78px;
-}
-
-.switch-btn:nth-child(3) {
-  padding: 6px 70px;
-}
-
-.switch-btn:last-child {
-  padding: 6px 71px;
+.switch-btn,
+.price-btn {
+  width: 217px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gallery {
@@ -428,7 +420,6 @@ a:hover {
 }
 
 .price-btn{
-  padding: 6px 38px;
   border: 2px solid var(--color-gold);
 }
 
@@ -705,18 +696,6 @@ a:hover {
     margin-bottom: 60px;
   }
 
-  .switch-btn:first-child {
-    padding: 6px 77px;
-  }
-
-  .switch-btn:nth-child(3) {
-    padding: 6px 69px;
-  }
-
-  .switch-btn:last-child {
-    padding: 6px 72px;
-  }
-
   .gallery,
   .price-container {
     justify-content: space-around;
@@ -847,10 +826,6 @@ a:hover {
 
   .switch-container {
     gap: 10px;
-  }
-
-  .switch-btn:nth-child(3) {
-    padding: 6px 72px;
   }
 
   .form-input,

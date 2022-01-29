@@ -30,7 +30,7 @@ const collectionEls = ligthThemeEls.map((el) => document.querySelectorAll(el));
 //?burger
 
   if (burger) {
-    hamburger.addEventListener('click', function(event){
+    hamburger.addEventListener('click', function(){
       document.body.classList.toggle('lock')
       hamburger.classList.toggle('active');
       menu.classList.toggle('open');
@@ -75,7 +75,6 @@ function getTranslate(event) {
 
 
     langBtn.forEach((btn) => btn.classList.remove('active'));
-    // console.log(event.target.dataset.language); // получили data-значение атрибута кнопки, по которой кликнули
     langBtn.forEach((btn) => {
       if (event.target.dataset.language === btn.dataset.language) btn.classList.add('active');
     })
@@ -86,13 +85,6 @@ language.addEventListener('click', getTranslate);
 //-----------------------------------------------------------------
 
 //? change color theme
-
-function changeTheme(event) {
-  if(event.target.classList.contains('color-theme-link')) {
-    collectionEls.map((el) => el.forEach((el) => el.classList.toggle('light-theme')));
-    collectionElsImg.forEach((el) => el.classList.toggle('change-img'));
-  }
-}
 
 function changeIconColorTheme() {
   sun.addEventListener('click', () => {
@@ -105,8 +97,14 @@ function changeIconColorTheme() {
     moon.classList.add('hidden');
   })
 }
-changeIconColorTheme();
 
+function changeTheme(event) {
+  if(event.target.classList.contains('color-theme-link')) {
+    collectionEls.map((el) => el.forEach((el) => el.classList.toggle('light-theme')));
+    collectionElsImg.forEach((el) => el.classList.toggle('change-img'));
+  }
+}
+changeIconColorTheme();
 colorTheme.addEventListener('click', changeTheme);
 
 //-----------------------------------------------------------------
