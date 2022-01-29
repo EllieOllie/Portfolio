@@ -1,14 +1,6 @@
 import i18Obj from '/js/translate.js';
 
 
-console.log(`Привет!
-Я постаралась выполнить все требования:)
-
-Для удобства навигации, иконка фотоаппрарата в левом верхнем углу используется как кнопка "наверх"`);
-
-console.log(``);
-
-
 //-----------------------------------------------------------------
 
 //?variables
@@ -32,7 +24,6 @@ const collectionElsImg = ligthThemeElsImg.map((el) => document.querySelector(el)
 const ligthThemeEls = ['.body', '.logo-img', '.lang', '.burger-line', '.menu', '.menu-item', '.main-btn', '.section-title', '.title-text', '.switch-btn', '.price-btn', '.form-input', '.order-message', '.contacts-btn', '.social-link'];
 const collectionEls = ligthThemeEls.map((el) => document.querySelectorAll(el));
 
-// const seasons = ['winter', 'spring', 'summer', 'autumn'];
 
 //-----------------------------------------------------------------
 
@@ -57,16 +48,6 @@ function closeMenu(event) {
 nav.addEventListener('click', closeMenu);
 //-----------------------------------------------------------------
 
-//? func change class to "active" // НЕ РАБОТАЕТ!
-
-// function changeClassActive(event, nodeList, attr) {
-//   nodeList.forEach((btn) => btn.classList.remove('active'));
-//   nodeList.forEach((btn) => {
-//     if (event.target.dataset[attr]=== btn.dataset[attr]) btn.classList.add('active');
-//   })
-// }
-
-//-----------------------------------------------------------------
 
 //? switch-gallery & switch-active buttons
 
@@ -84,17 +65,6 @@ switchBtnsContainer.addEventListener('click', changeImage);
 
 //-----------------------------------------------------------------
 
-//? cash images // НЕ РАБОТАЕТ!!!
-
-// function preloadImages(array) {
-
-//   for(let i = 1; i <= 6; i++) {
-//     const img = new Image();
-//     array.forEach((img, index) => img.src = `assets/img/${seasons[index]}/${index}.jpg`);
-//   }
-// }
-// preloadImages(seasons);
-//-----------------------------------------------------------------
 
 //? translate
 

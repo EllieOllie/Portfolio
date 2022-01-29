@@ -83,7 +83,7 @@ a:hover {
 }
 
 .main-image.change-img {
-  background: no-repeat 50% 0/cover url(/assets/jpg/main-bg_light.jpg);
+  background: no-repeat 75% 0/cover url(/assets/jpg/main-bg_light.jpg);
 }
 
 .header-container,
@@ -736,11 +736,7 @@ a:hover {
   }
 
   .video-play {
-    top: 42.7%;
-  }
-
-  .play-btn {
-    width: 50%;
+    top: 32%;
   }
 
   .price {
@@ -771,6 +767,7 @@ a:hover {
 
   .contacts-title {
     padding: 0 0 14px;
+    text-shadow: 2px 2px 10px var(--color-gold);
   }
 
   .order-message {
@@ -872,7 +869,7 @@ a:hover {
 
   .main-image {
     height: 100vh;
-    background: no-repeat 75% 0/cover url(/assets/jpg/main-bg_768.jpg);
+    background: no-repeat 75% 0/cover url(/assets/jpg/main-bg.jpg);
   }
 
   .logo-img,
@@ -899,13 +896,14 @@ a:hover {
   }
 
   .hero {
-    padding: 20px 0 calc(21% - 10px) 20px;
+    padding: 20px 20px calc(21% - 10px);
   }
 
   .title {
     padding-bottom: 235px;
+    text-align: right;
     font-size: var(--font2);
-    text-shadow: 2px 2px 10px var(--color-black);
+    text-shadow: 2px 2px 10px var(--color-gold);
   }
 
   .description {
@@ -928,12 +926,11 @@ a:hover {
   }
 
   .video-play {
-    top: 36.7%;
-    left: 42.5%;
+    top: 18%;
   }
 
   .play-btn {
-    width: 15vw;
+    width: 12vw;
   }
 
   .price-item {
@@ -954,6 +951,12 @@ a:hover {
 
   .rss {
     padding-bottom: 18px;
+  }
+}
+
+@media (max-width: 376px) {
+  .video-play {
+    top: 10%;
   }
 }
 
@@ -1001,6 +1004,10 @@ a:hover {
 
 #burger.active .burger-line.light-theme {
   background-color: var(--color-black);
+}
+
+.menu.open.light-theme {
+  background: var(--color-white);
 }
 
 .menu.light-theme,
