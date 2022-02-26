@@ -154,8 +154,7 @@ const body = document.querySelector('.body');
     }
   });
 
-  //-----------------------------------------------------------------
-  //? local Storage
+  //? local Storage-----------------------------------------------------------------
 
   function getLocalStorage() {
     if(localStorage.getItem('lang')) {
@@ -169,4 +168,133 @@ const body = document.querySelector('.body');
         }
     }
   }
-  window.addEventListener('load', getLocalStorage)
+  window.addEventListener('load', getLocalStorage);
+
+  //? custom video-player------------------------------------------------------------
+
+  const videoContainer = document.querySelector('.video-container');
+  const video = videoContainer.querySelector('.viewer');
+  const playBtn = videoContainer.querySelector('.play-btn');
+  const controls = videoContainer.querySelector('.player-controls');
+  const progress = videoContainer.querySelector('.progress');
+  const progressFill = videoContainer.querySelector('.progress-fill');
+  const playBtnToggle = videoContainer.querySelector('.play-toggle');
+  const playIcon = videoContainer.querySelector('.player-icon');
+  const timer = videoContainer.querySelector('.timer');
+  const videoDuration = videoContainer.querySelector('.video-duration');
+  const volumeBtn = videoContainer.querySelector('.volume-btn');
+  const volumeIcon = videoContainer.querySelector('.volume-icon');
+  const rangeVolume = videoContainer.querySelector('.player-volume');
+
+
+  function playVideo () {
+    const videoToggle = video.paused ? 'play' : 'pause';
+    video[videoToggle]();
+  }
+
+  function changePlayBtn () {
+    if (video.paused) {
+      playIcon.firstElementChild.setAttribute('xlink:href', 'assets/svg/sprite_video.svg#play2');
+      playBtn.classList.remove('hidden');
+      controls.classList.remove('show');
+    } else {
+      playIcon.firstElementChild.setAttribute('xlink:href', 'assets/svg/sprite_video.svg#pause');
+      playBtn.classList.add('hidden');
+      controls.classList.add('show');
+    }
+  }
+
+  // volume update
+  function handleRangeUpdate() {
+    video[this.name] = this.value;
+    // console.log(this.name);
+    // console.log(this.value);
+  }
+//!--------------
+
+let volumeValue = rangeVolume.value;
+
+  function handleChangeVolume () {
+    let value = this.value;
+    this.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${value*100}%, var(--color-white) ${value*100}%,  var(--color-white) 100%)`;
+
+    if (+(rangeVolume.value) === 0) {
+      volumeIcon.firstElementChild.setAttribute('xlink:href', 'assets/svg/sprite_video.svg#mute');
+    } else {
+      volumeIcon.firstElementChild.setAttribute('xlink:href', 'assets/svg/sprite_video.svg#volume');
+    }
+  }
+
+  function muteVolume() {
+    if (video.muted) {
+      rangeVolume.value = volumeValue;
+      video.muted = false;
+      volumeIcon.firstElementChild.setAttribute('xlink:href', 'assets/svg/sprite_video.svg#volume');
+      rangeVolume.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${volumeValue*100}%, var(--color-white) ${volumeValue*100}%,  var(--color-white) 100%)`;
+    } else {
+      rangeVolume.value = 0;
+      video.muted = true;
+      volumeIcon.firstElementChild.setAttribute('xlink:href', 'assets/svg/sprite_video.svg#mute');
+      rangeVolume.style.background = `linear-gradient(to right, var(--color-gold) 0%, var(--color-gold) ${volumeValue}%, var(--color-white) ${volumeValue}%,  var(--color-white) 100%)`;
+    }
+  }
+
+//!-----------------------------------------------
+
+  function fillProgressVideo() {
+    // console.log(video.currentTime);
+    const percent = (video.currentTime / video.duration) * 100;
+    progressFill.style.flexBasis = `${percent}%`;
+
+    // current time
+    let currentMinutes = Math.floor(video.currentTime / 60);
+    if (currentMinutes < 10) currentMinutes = `0${currentMinutes}`;
+    let currentSeconds = Math.floor(video.currentTime % 60);
+    if (currentSeconds < 10) currentSeconds = `0${currentSeconds}`;
+    timer.innerHTML = `${currentMinutes}:${currentSeconds}`;
+
+    // video duration
+    let durationMinutes = Math.floor(video.duration / 60);
+    if (durationMinutes < 10) durationMinutes = `0${durationMinutes}`;
+    let durationSeconds = Math.floor(video.duration % 60);
+    if (durationSeconds < 10) durationSeconds = `0${durationSeconds}`;
+    videoDuration.innerHTML = `${durationMinutes}:${durationSeconds}`;
+  }
+
+  function handleClickProgress(event) {
+    // console.log(event);
+    const dragOver = (event.offsetX / progress.offsetWidth) * video.duration;
+    // console.log(video.duration);
+    video.currentTime = dragOver;
+  }
+
+
+  //! не корректно работает!!!! Keypress (Play/Pause)
+  // window.addEventListener('keydown', (event) => {
+  //   if (event.keyCode === 32) playVideo();
+  //   });
+
+
+  video.addEventListener('click', playVideo);
+  video.addEventListener('play', changePlayBtn);
+  video.addEventListener('pause', changePlayBtn);
+  video.addEventListener('timeupdate', fillProgressVideo);
+
+  playBtnToggle.addEventListener('click', playVideo);
+
+  playBtn.addEventListener('click', playVideo);
+
+  volumeBtn.addEventListener('click', muteVolume);
+
+  rangeVolume.addEventListener('change', handleRangeUpdate);
+  rangeVolume.addEventListener('mousemove', handleRangeUpdate);
+  rangeVolume.addEventListener('input', handleChangeVolume);
+
+
+  let mousedown = false;
+  progress.addEventListener('click', handleClickProgress);
+  progress.addEventListener('mousemove', (event) => mousedown && handleClickProgress(event));
+  progress.addEventListener('mousedown', () => mousedown = true);
+  progress.addEventListener('mouseup', () => mousedown = false);
+
+  //?--------------------------------------------------------------------------------
