@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/style.css">
+  <script defer type="module" src="js/index.js"></script>
   <link rel="shortcut icon" href="assets/ico/favicon.ico" type="image/x-icon">
   <meta property="og:title" content="Alexa Rise">
   <meta property="og:description" content="photographer portfolio">
@@ -19,54 +20,50 @@
 </head>
 <body class="body">
   <div class="wrapper">
-    <div class="main-image">
-      <header class="header" id="header">
-        <div class="header-container">
-          <a class="logo" href="#header">
-            <svg class="logo-img">
-              <use xlink:href="assets/svg/sprite.svg#logo"></use>
+    <header class="header" id="header">
+      <a class="logo" href="#header">
+        <svg class="logo-img">
+          <use xlink:href="assets/svg/sprite.svg#logo"></use>
+        </svg>
+      </a>
+      <div class="header-container">
+        <div class="menu-burger">
+          <div class="burger" id="burger">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+          </div>
+          <nav class="menu">
+            <ul class="menu-list">
+              <li><a class="menu-item" href="#skills" data-i18n="skills">Skills</a></li>
+              <li><a class="menu-item" href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
+              <li><a class="menu-item" href="#video" data-i18n="video" >Video</a></li>
+              <li><a class="menu-item" href="#price" data-i18n="price">Price</a></li>
+              <li><a class="menu-item" href="#contacts" data-i18n="contacts">Contacts</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="languages">
+          <a class="lang active" data-language="en" href="#">EN</a>
+          <span>/</span>
+          <a class="lang" data-language="ru" href="#">RU</a>
+        </div>
+        <div class="color-theme">
+          <a href="#">
+            <svg class="color-theme-link">
+              <use class="sun" xlink:href="assets/svg/sprite.svg#sun"></use>
             </svg>
           </a>
-          <div class="menu-burger">
-            <div class="burger" id="burger">
-              <span class="burger-line"></span>
-              <span class="burger-line"></span>
-              <span class="burger-line"></span>
-            </div>
-            <nav class="menu">
-              <ul class="menu-list">
-                <li><a class="menu-item" href="#skills" data-i18n="skills">Skills</a></li>
-                <li><a class="menu-item" href="#portfolio" data-i18n="portfolio">Portfolio</a></li>
-                <li><a class="menu-item" href="#video" data-i18n="video" >Video</a></li>
-                <li><a class="menu-item" href="#price" data-i18n="price">Price</a></li>
-                <li><a class="menu-item" href="#contacts" data-i18n="contacts">Contacts</a></li>
-              </ul>
-            </nav>
-          </div>
-          <div class="languages">
-            <a class="lang active" data-language="en" href="#">EN</a>
-            <span>/</span>
-            <a class="lang" data-language="ru" href="#">RU</a>
-          </div>
-          <div class="color-theme">
-            <a href="#">
-              <svg class="color-theme-link light">
-                <use xlink:href="assets/svg/sprite.svg#sun"></use>
-              </svg>
-              <svg class="color-theme-link dark hidden">
-                <use xlink:href="assets/svg/sprite.svg#moon"></use>
-              </svg>
-            </a>
-          </div>
         </div>
-      </header>
+      </div>
+    </header>
+    <main class="main">
       <section class="hero" id="hero">
         <h1 class="title" data-i18n="hero-title">Alexa Rise</h1>
         <p class="description" data-i18n="hero-text">Save sincere emotions, romantic feelings and happy moments of life together with professional photographer Alexa Rise</p>
-        <button class="btn-fill main-btn" data-i18n="hire">Hire me</button>
+        <button class="btn-fill main-btn animated" data-i18n="hire">Hire me
+        </button>
       </section>
-    </div>
-    <main class="main">
       <section class="skills" id="skills">
         <div class="section-title">
           <h2 class="title-text" data-i18n="skills">Skills</h2>
@@ -118,11 +115,34 @@
           <h2 class="title-text" data-i18n="video">Video</h2>
         </div>
         <div class="video-container">
-          <button class="video-play">
-            <svg class="play-btn">
+          <video class="video-player viewer" preload="metadata"  poster="assets/jpg/video-player.jpg">
+            <source src="assets/video/video.webm">
+            <source src="assets/video/video.mp4">
+          </video>
+          <button class="play-btn">
+            <svg class="play-icon">
               <use xlink:href="assets/svg/sprite.svg#play_hover"></use>
             </svg>
           </button>
+          <div class="player-controls">
+            <button class="player-btn play-toggle">
+              <svg class="player-icon">
+                <use xlink:href="assets/svg/sprite_video.svg#play2"></use>
+              </svg>
+            </button>
+            <div class="progress">
+              <div class="progress-fill"></div>
+            </div>
+            <div class="timer">00:00</div>
+            <span>/</span>
+            <div class="video-duration">00:00</div>
+            <button class="player-btn volume-btn">
+              <svg class="volume-icon">
+                <use xlink:href="assets/svg/sprite_video.svg#volume"></use>
+              </svg>
+            </button>
+            <input class="player-volume" type="range" name="volume" min="0" max="1" step="0.05" value="0.4">
+          </div>
         </div>
       </section>
       <section class="price" id="price">
@@ -131,7 +151,7 @@
         </div>
         <div class="price-container">
           <div class="price-item">
-            <h3 class="price-title">Standard</h3>
+            <h3 class="price-title" data-i18n="standard">Standard</h3>
             <h4 class="price-value">500 $</h4>
             <div class="price-description">
               <span class="price-description__item" data-i18n="price-description-1-span-1">One location</span>
@@ -140,10 +160,10 @@
               <span class="price-description__item" data-i18n="price-description-1-span-4">Readiness 2-3 weeks</span>
               <span class="price-description__item" data-i18n="price-description-1-span-5">Make up, visage</span>
             </div>
-            <button class="btn-fill price-btn" data-i18n="order">Order shooting</button>
+            <button class="btn-fill price-btn animated" data-i18n="order">Order shooting</button>
           </div>
           <div class="price-item">
-            <h3 class="price-title">Premium</h3>
+            <h3 class="price-title" data-i18n="premium">Premium</h3>
             <h4 class="price-value">700 $</h4>
             <div class="price-description">
               <span class="price-description__item" data-i18n="price-description-2-span-1">One or two locations</span>
@@ -152,10 +172,10 @@
               <span class="price-description__item" data-i18n="price-description-2-span-4">Readiness 1-2 weeks</span>
               <span class="price-description__item" data-i18n="price-description-2-span-5">Make up, visage</span>
             </div>
-            <button class="btn-fill price-btn" data-i18n="order">Order shooting</button>
+            <button class="btn-fill price-btn animated" data-i18n="order">Order shooting</button>
           </div>
           <div class="price-item">
-            <h3 class="price-title">Gold</h3>
+            <h3 class="price-title" data-i18n="gold">Gold</h3>
             <h4 class="price-value">1000 $</h4>
             <div class="price-description">
               <span class="price-description__item" data-i18n="price-description-3-span-1">Three locations or more</span>
@@ -164,7 +184,7 @@
               <span class="price-description__item" data-i18n="price-description-3-span-4">Readiness 1 week</span>
               <span class="price-description__item" data-i18n="price-description-3-span-5">Make up, visage, hairstyle</span>
             </div>
-            <button class="btn-fill price-btn" data-i18n="order">Order shooting</button>
+            <button class="btn-fill price-btn animated" data-i18n="order">Order shooting</button>
           </div>
         </div>
       </section>
@@ -173,12 +193,12 @@
           <h2 class="title-text contacts-title" data-i18n="contact-me">Contact me</h2>
           <form class="order-form">
             <label for="e-mail"></label><br>
-            <input class="form-input" type="email" id="e-mail" name="e-mail" placeholder="E-mail">
+            <input class="form-input" type="email" id="e-mail" name="e-mail" placeholder="E-mail" data-i18n="e-mail">
             <label for="phone"></label><br>
-            <input class="form-input" type="tel" id="phone" name="phone" placeholder="Phone">
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="Phone" data-i18n="phone">
           </form>
-          <textarea class="order-message" placeholder="Message"></textarea><br>
-          <button class="btn-fill contacts-btn" data-i18n="send-message">Send message</button>
+          <textarea class="order-message" placeholder="Message" data-i18n="message"></textarea><br>
+          <button class="btn-fill contacts-btn animated" data-i18n="send-message">Send message</button>
         </div>
       </section>
     </main>
@@ -189,7 +209,7 @@
           <span>2022</span>
           <a href="https://github.com/EllieOllie" target="_blank">EllieOllie</a>
         </div>
-        <a class="rss" href="https://rs.school/js-stage0/" target="_blank">Rolling Scopes School</a>
+        <!-- <a class="rss" href="https://rs.school/js-stage0/" target="_blank">Rolling Scopes School</a> -->
         <ul class="contact-links">
           <li>
             <a href="instagram.com" target="_blank">
@@ -223,6 +243,5 @@
       </div>
     </footer>
   </div>
-  <script type="module" src="./js/index.js"></script>
 </body>
 </html>
